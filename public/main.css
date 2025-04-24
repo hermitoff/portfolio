@@ -1,3 +1,86 @@
-body {
-    
+:root {
+    --background-color: #f8f9fa;
+    --background-color-alternative: #ebebeb;
+}
+
+/* Montserrat Alternates Regular */
+@font-face {
+    font-family: 'Montserrat Alternates';
+    src: url('/font/Montserrat/MontserratAlternates-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Montserrat Alternates Bold */
+@font-face {
+    font-family: 'Montserrat Alternates';
+    src: url('/font/Montserrat/MontserratAlternates-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* Montserrat Alternates Italic */
+@font-face {
+    font-family: 'Montserrat Alternates';
+    src: url('/font/Montserrat/MontserratAlternates-Italic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+}
+
+/* Manrope Regular */
+@font-face {
+    font-family: 'Manrope';
+    src: url('/font/Manrope/static/Manrope-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Manrope Medium */
+@font-face {
+    font-family: 'Manrope';
+    src: url('/font/Manrope/static/Manrope-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+/* Manrope Bold */
+@font-face {
+    font-family: 'Manrope';
+    src: url('/font/Manrope/static/Manrope-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Montserrat Alternates";
+}
+
+p, li, span, a {
+    font-family: "Manrope";
+}
+
+.div-central {
+    background-color: var(--background-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.top-div-cv {
+    background-color: var(--background-color-alternative);
+    padding: 40px 30px;
+    border-radius: 12px;
+    height: 60vh;
+    width: 100%;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
 }
