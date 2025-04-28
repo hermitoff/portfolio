@@ -1,9 +1,10 @@
 :root {
     --background-color: #f8f9fa;
     --background-color-alternative: #ebebeb;
+    --accent-color: #4f46e5;
 }
 
-/* Montserrat Alternates Regular */
+/* Polices */
 @font-face {
     font-family: 'Montserrat Alternates';
     src: url('/font/Montserrat/MontserratAlternates-Regular.ttf') format('truetype');
@@ -50,36 +51,112 @@
     font-style: normal;
 }
 
+/* Reset des marges de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--background-color);
+    font-family: "Manrope";
+    overflow-x: hidden;
+}
 
 h1, h2, h3, h4, h5, h6 {
     font-family: "Montserrat Alternates";
 }
 
-p, li, span, a {
-    font-family: "Manrope";
+h1 {
+    font-size: 36px;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+    text-align: center;
 }
 
-.div-central {
-    background-color: var(--background-color);
+h2 {
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    font-size: 24px;
+    color: var(--accent-color);
+}
+
+/* CV Layout */
+.cv-layout {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    gap: 30px;
     max-width: 1000px;
-    margin: 0 auto;
+    margin: 40px auto;
     padding: 20px;
-    box-sizing: border-box;
+    width: 100%;
 }
 
-.top-div-cv {
+.cv-left, .cv-right {
+    flex: 1;
     background-color: var(--background-color-alternative);
-    padding: 40px 30px;
+    padding: 20px;
     border-radius: 12px;
-    height: 60vh;
-    width: 100%;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 0 auto 30px auto;
+    display: block;
+}
+
+/* Listes */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+}
+
+ul li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+    font-size: 18px;
+    line-height: 1;
+}
+
+/* Liens */
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Liste contact avec icônes */
+.contact-list li {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-    box-sizing: border-box;
+    gap: 10px;
+}
+
+/* Version responsive mobile */
+@media (max-width: 768px) {
+    .cv-layout {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .cv-left, .cv-right {
+        width: 100%;
+    }
 }
