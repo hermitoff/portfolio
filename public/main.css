@@ -99,12 +99,27 @@ h2 {
 
 .cv-left, .cv-right {
     flex: 1;
-    background-color: var(--background-color-alternative);
+    background: linear-gradient(135deg, #ffffff, #f1f1f1);
     padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(79, 70, 229, 0.1);
+    border-top: 4px solid var(--accent-color);
+    transition: background 0.8s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Effet au survol */
+.cv-left:hover, .cv-right:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(79, 70, 229, 0.15);
+}
+
+.cv-left:hover {
+    background: linear-gradient(135deg, #f9f9f9, #e0e0ff);
+}
+.cv-right:hover {
+    background: linear-gradient(135deg, #f9f9f9, #ffe0e0);
+}
+/* Image de profil */
 .profile-picture {
     width: 150px;
     height: 150px;
