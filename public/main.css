@@ -83,6 +83,10 @@ h2 {
     color: var(--accent-color);
 }
 
+.justify-center {
+    text-align: center;
+}
+
 /* CV Layout */
 .cv-layout {
     display: flex;
