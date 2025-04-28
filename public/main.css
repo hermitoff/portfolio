@@ -11,7 +11,6 @@
     font-style: normal;
 }
 
-/* Montserrat Alternates Bold */
 @font-face {
     font-family: 'Montserrat Alternates';
     src: url('/font/Montserrat/MontserratAlternates-Bold.ttf') format('truetype');
