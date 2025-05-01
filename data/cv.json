@@ -1,0 +1,96 @@
+{
+    "layout": [
+      {
+        "id": "left",
+        "className": "cv-left",
+        "sections": ["photo", "education", "diplomas", "experiences", "qualities"]
+      },
+      {
+        "id": "right",
+        "className": "cv-right",
+        "sections": ["technicalSkills", "softSkills", "languages", "contacts"]
+      }
+    ],
+    "sections": {
+      "photo": {
+        "type": "photo",
+        "name": "Élodie GIMENEZ",
+        "description": "Étudiante en BTS SIO (Service Informatique aux Organisations) Option SISR. Passionnée par l'informatique, je développe mes compétences en administration système, réseau et développement web.",
+        "image": "img/profile.png"
+      },
+      "education": {
+        "type": "list",
+        "title": "Formations",
+        "items": [
+          { "primary": "BTS SIO", "secondary": "Lycée Dick Ukeiwë", "years": "2025 - 2026" },
+          { "primary": "Baccalauréat Général", "secondary": "Lycée Dick Ukeiwë", "years": "2022 - 2024" },
+          { "primary": "Brevet", "secondary": "Collège Edmée Varin", "years": "2018 - 2021" }
+        ]
+      },
+      "diplomas": {
+        "type": "list",
+        "title": "Diplômes",
+        "items": [
+          { "primary": "Baccalauréat", "secondary": "", "years": "2024" },
+          { "primary": "Brevet des collèges", "secondary": "", "years": "2021" }
+        ]
+      },
+      "experiences": {
+        "type": "list",
+        "title": "Expériences",
+        "items": [
+          { "primary": "Déploiement d'un site web dynamique avec Docker" },
+          { "primary": "Gestion client OVHcloud et DigitalOcean" },
+          { "primary": "Configuration de routeur TP-LINK" }
+        ]
+      },
+      "qualities": {
+        "type": "text",
+        "title": "Qualités",
+        "content": "Je suis autonome et curieuse, ce qui me permet d'apprendre rapidement de nouvelles technologies."
+      },
+      "technicalSkills": {
+        "type": "skills",
+        "title": "Compétences Techniques",
+        "items": [
+          { "category": "Systèmes d'exploitation", "details": "Linux (Debian, Ubuntu), Windows, MacOS" },
+          { "category": "Réseaux", "details": "SSH, SFTP, WireGuard" },
+          { "category": "Virtualisation", "details": "Proxmox" },
+          { "category": "Conteneurisation", "details": "Docker" },
+          { "category": "Développement", "details": "JavaScript (NodeJS), Python, SQL" },
+          { "category": "Web", "details": "HTML, CSS, EJS" },
+          { "category": "Gestion de version", "details": "Git, GitHub" },
+          { "category": "Bureautique", "details": "Office 365" }
+        ]
+      },
+      "softSkills": {
+        "type": "list",
+        "title": "Compétences Comportementales (Soft Skills)",
+        "items": [
+          { "primary": "Autonomie" },
+          { "primary": "Adaptabilité" },
+          { "primary": "Résolution de problèmes" }
+        ]
+      },
+      "languages": {
+        "type": "languages",
+        "title": "Langues",
+        "items": [
+          { "name": "Français", "level": "langue maternelle" },
+          { "name": "Anglais", "level": "B1+" },
+          { "name": "Espagnol", "level": "A2+" }
+        ]
+      },
+      "contacts": {
+        "type": "contacts",
+        "title": "Contact",
+        "items": [
+          { "icon": "fas fa-globe", "url": "https://elodie.gimenez.xyz", "label": "Site internet", "newTab": false },
+          { "icon": "fab fa-linkedin", "url": "https://www.linkedin.com/in/%C3%A9lodie-gimenez-198a13362/", "label": "LinkedIn", "newTab": true },
+          { "icon": "fas fa-envelope", "url": "mailto:elodie@gimenez.xyz", "label": "Email", "newTab": false },
+          { "icon": "fab fa-github", "url": "https://github.com/hermitoff", "label": "Github", "newTab": true }
+        ]
+      }
+    }
+  }
+  

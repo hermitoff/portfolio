@@ -76,6 +76,10 @@ h2 {
     border-bottom: 2px solid var(--accent-color);
 }
 
+.justify-center {
+    text-align: center;
+}
+
 /* Layout */
 .cv-layout {
     max-width: 1200px;
