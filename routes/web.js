@@ -14,7 +14,7 @@ router.get('/cv', (req, res) => {
     res.render('cv', {
         cvdata: cvdata,
         renderSection
-      });
+    });
 });
 
 module.exports = router;

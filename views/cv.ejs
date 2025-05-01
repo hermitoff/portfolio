@@ -14,12 +14,12 @@
     </div>
     <div class="cv-layout">
         <% cvdata.layout.forEach(function(column) { %>
-          <div class="<%= column.className %>">
+        <div class="<%= column.className %>">
             <% column.sections.forEach(function(sectionName) { %>
-              <%- renderSection(cvdata.sections[sectionName]) %>
+            <%- renderSection(cvdata.sections[sectionName]) %>
             <% }) %>
-          </div>
-        <% }) %>
+        </div>
+    <% }) %>
     </div>
     <script src="/index.js"></script>
 </body>
