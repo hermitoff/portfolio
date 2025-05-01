@@ -1,186 +1,142 @@
 :root {
     --background-color: #f8f9fa;
-    --background-color-alternative: #ebebeb;
+    --background-alt: #ebebeb;
     --accent-color: #4f46e5;
 }
 
-/* Polices */
-@font-face {
-    font-family: 'Montserrat Alternates';
-    src: url('/font/Montserrat/MontserratAlternates-Regular.ttf') format('truetype');
-    font-weight: 400;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Montserrat Alternates';
-    src: url('/font/Montserrat/MontserratAlternates-Bold.ttf') format('truetype');
-    font-weight: 700;
-    font-style: normal;
-}
-
-/* Montserrat Alternates Italic */
-@font-face {
-    font-family: 'Montserrat Alternates';
-    src: url('/font/Montserrat/MontserratAlternates-Italic.ttf') format('truetype');
-    font-weight: 400;
-    font-style: italic;
-}
-
-/* Manrope Regular */
-@font-face {
-    font-family: 'Manrope';
-    src: url('/font/Manrope/static/Manrope-Regular.ttf') format('truetype');
-    font-weight: 400;
-    font-style: normal;
-}
-
-/* Manrope Medium */
-@font-face {
-    font-family: 'Manrope';
-    src: url('/font/Manrope/static/Manrope-Medium.ttf') format('truetype');
-    font-weight: 500;
-    font-style: normal;
-}
-
-/* Manrope Bold */
-@font-face {
-    font-family: 'Manrope';
-    src: url('/font/Manrope/static/Manrope-Bold.ttf') format('truetype');
-    font-weight: 700;
-    font-style: normal;
-}
-
-/* Reset des marges de base */
-* {
+/* Reset */
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    background: linear-gradient(135deg, #f9f9f9 0%, #e0e0e0 100%);
-    font-family: "Manrope";
-    overflow-x: hidden;
+/* Fonts */
+@font-face {
+    font-family: 'Montserrat Alternates';
+    src: url('/font/Montserrat/MontserratAlternates-Regular.ttf') format('truetype');
+    font-weight: 400;
+}
+@font-face {
+    font-family: 'Montserrat Alternates';
+    src: url('/font/Montserrat/MontserratAlternates-Bold.ttf') format('truetype');
+    font-weight: 700;
+}
+@font-face {
+    font-family: 'Montserrat Alternates';
+    src: url('/font/Montserrat/MontserratAlternates-Italic.ttf') format('truetype');
+    font-style: italic;
+    font-weight: 400;
+}
+@font-face {
+    font-family: 'Manrope';
+    src: url('/font/Manrope/static/Manrope-Regular.ttf') format('truetype');
+    font-weight: 400;
+}
+@font-face {
+    font-family: 'Manrope';
+    src: url('/font/Manrope/static/Manrope-Medium.ttf') format('truetype');
+    font-weight: 500;
+}
+@font-face {
+    font-family: 'Manrope';
+    src: url('/font/Manrope/static/Manrope-Bold.ttf') format('truetype');
+    font-weight: 700;
 }
 
+/* Base */
+body {
+    background: linear-gradient(135deg, var(--background-color), var(--background-alt));
+    font-family: 'Manrope', sans-serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Headings */
 h1, h2, h3, h4, h5, h6 {
-    font-family: "Montserrat Alternates";
+    font-family: 'Montserrat Alternates', sans-serif;
+    color: var(--accent-color);
 }
 
 h1 {
-    font-size: 36px;
-    color: var(--accent-color);
-    margin-bottom: 10px;
+    font-size: 2.5rem;
     text-align: center;
+    margin-bottom: 0.5em;
+    font-weight: 700;
 }
 
 h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1em;
+    padding-bottom: 0.3em;
     border-bottom: 2px solid var(--accent-color);
-    padding-bottom: 5px;
-    margin-bottom: 15px;
-    font-size: 24px;
-    color: var(--accent-color);
 }
 
-.justify-center {
-    text-align: center;
-}
-
-/* CV Layout */
+/* Layout */
 .cv-layout {
+    max-width: 1200px;
+    width: 90%;
+    margin: 60px auto;
     display: flex;
-    gap: 30px;
-    max-width: 1000px;
-    margin: 40px auto;
-    padding: 20px;
-    width: 100%;
+    gap: 40px;
+    animation: appear 1s ease-out 0.5s forwards;
     opacity: 0;
-    transform: translateY(40px) scale(0.98);
-    animation: fadeInUp 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-    animation-play-state: paused;
-
+    transform: translateY(30px);
 }
-
-@keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        transform: translateY(40px) scale(0.98);
-        filter: blur(4px);
-    }
-    60% {
-        opacity: 1;
-        transform: translateY(-5px) scale(1.02);
-        filter: blur(0);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-        filter: blur(0);
-    }
-}
-
 
 .cv-left, .cv-right {
     flex: 1;
-    padding: 20px;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(79, 70, 229, 0.1);
+    backdrop-filter: blur(20px);
     border-radius: 20px;
-    border-top: 4px solid var(--accent-color);
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.6), rgba(241, 241, 241, 0.6));
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.03), 0 8px 20px rgba(79, 70, 229, 0.1);
-    transform: translateY(40px) scale(0.98);
-    opacity: 0;
-    animation: fadeInUp 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    padding: 30px;
+    box-shadow: 0 8px 32px rgba(79, 70, 229, 0.15);
+    transition: all 0.4s ease;
 }
 
-.cv-left {
-    animation-delay: 0.2s;
-}
-
-.cv-right {
-    animation-delay: 0.4s;
-}
-
-/* Effet au survol */
 .cv-left:hover, .cv-right:hover {
-    transform: translateY(-5px);
-    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.02), 0 12px 24px rgba(79, 70, 229, 0.2);
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(79, 70, 229, 0.3);
 }
 
-.cv-left:hover {
-    background: linear-gradient(135deg, rgba(249, 249, 255, 0.8), rgba(224, 224, 255, 0.8));
-    transform: translateY(-5px);
-    box-shadow: 0 12px 24px rgba(79, 70, 229, 0.2);
+/* Animation */
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.cv-right:hover {
-    background: linear-gradient(135deg, rgba(249, 249, 255, 0.8), rgba(255, 224, 224, 0.8));
-    transform: translateY(-5px);
-    box-shadow: 0 12px 24px rgba(79, 70, 229, 0.2);
-}
-
-/* Image de profil */
+/* Profile Picture */
 .profile-picture {
-    width: 150px;
-    height: 150px;
+    width: 140px;
+    height: 140px;
     border-radius: 50%;
     object-fit: cover;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin: 0 auto 30px auto;
+    margin: 0 auto 20px;
     display: block;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .profile-picture:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    transform: scale(1.08);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* Listes */
+/* Lists */
 ul {
     list-style: none;
+    margin-top: 1em;
     padding: 0;
 }
 
@@ -188,6 +144,7 @@ ul li {
     position: relative;
     padding-left: 20px;
     margin-bottom: 10px;
+    font-size: 1rem;
 }
 
 ul li::before {
@@ -195,64 +152,24 @@ ul li::before {
     position: absolute;
     left: 0;
     color: var(--accent-color);
-    font-size: 18px;
-    line-height: 1;
+    font-size: 20px;
 }
 
-/* Liens */
+/* Links */
 a {
     color: var(--accent-color);
     text-decoration: none;
+    font-weight: 500;
 }
 
 a:hover {
     text-decoration: underline;
 }
 
-/* Liste contact avec icônes */
-.contact-list li {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-/* Version responsive mobile */
-@media (max-width: 768px) {
-    .cv-layout {
-        flex-direction: column;
-        padding: 10px;
-    }
-
-    .cv-left, .cv-right {
-        width: 100%;
-    }
-}
-
-.spinner {
-    width: 50px;
-    height: 50px;
-    border: 5px solid rgba(79, 70, 229, 0.3);
-    border-top: 5px solid var(--accent-color);
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-}
-
-/* Animation de rotation */
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-.cv-layout, .cv-left, .cv-right {
-    opacity: 0;
-    animation-play-state: paused;
-}
-
+/* Loader */
 #loader {
-    /* visible au départ */
     position: fixed;
-    top: 0;
-    left: 0;
+    top: 0; left: 0;
     width: 100%;
     height: 100%;
     background: var(--background-color);
@@ -266,4 +183,26 @@ a:hover {
 #loader.hidden {
     opacity: 0;
     visibility: hidden;
+}
+
+.spinner {
+    width: 60px;
+    height: 60px;
+    border: 5px solid rgba(79, 70, 229, 0.2);
+    border-top: 5px solid var(--accent-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .cv-layout {
+        flex-direction: column;
+        gap: 20px;
+    }
 }
