@@ -210,3 +210,156 @@ a:hover {
         gap: 20px;
     }
 }
+
+button {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #3730a3;
+}
+
+@media print {
+    /* Réinitialisation */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        background: none;
+        font-family: 'Manrope', sans-serif;
+        color: #000;
+        min-height: auto;
+        display: block;
+    }
+
+    .cv-layout {
+        max-width: 100%;
+        width: 100%;
+        margin: 20px auto;
+        display: flex;
+        flex-direction: row; /* Mettre les sections côte à côte */
+        justify-content: space-between; /* Pour espacer les sections si nécessaire */
+        gap: 20px; /* Espace entre les colonnes */
+    }
+
+    .cv-left, .cv-right {
+        flex: 1; /* Chaque colonne prend une part égale de l'espace */
+        background: #fff;
+        border: none;
+        backdrop-filter: none;
+        border-radius: 0;
+        padding: 15px;
+        box-shadow: none;
+        margin-bottom: 0; /* Supprimer toute marge inférieure pour éviter l'espace entre les deux colonnes */
+    }
+
+    h1 {
+        font-size: 2rem;
+        text-align: center;
+        margin-bottom: 0.5em;
+        font-weight: 700;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+        margin-bottom: 0.75em;
+        padding-bottom: 0.2em;
+        border-bottom: 1px solid var(--accent-color);
+    }
+
+    h3, h4, h5, h6 {
+        font-size: 1.2rem;
+    }
+
+    .profile-picture {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin: 0 auto 20px;
+        display: block;
+        box-shadow: none;
+    }
+
+    ul li {
+        font-size: 0.9rem;
+        margin-bottom: 5px;
+    }
+
+    .cv-layout {
+        gap: 20px;
+    }
+
+    /* Marges réduites */
+    body {
+        margin: 20mm;
+    }
+
+    /* Textes ajustés */
+    h1, h2, h3, h4, h5, h6 {
+        font-size: 1rem;
+    }
+
+    p, li, .justify-center {
+        font-size: 0.9rem;
+    }
+
+    ul {
+        padding-left: 20px;
+    }
+
+    a {
+        font-size: 0.9rem;
+    }
+
+    /* Pour que le footer ou les éléments supplémentaires tiennent sur la page */
+    footer {
+        margin-top: 20px;
+        font-size: 0.9rem;
+    }
+
+    .justify-center {
+        text-align: center;
+    }
+
+    /* Réduction de l'espace de padding dans le cv-layout */
+    .cv-layout {
+        gap: 10px;
+    }
+
+    /* Ajuster les sections pour ne pas prendre trop de place */
+    .cv-left, .cv-right {
+        padding: 12px;
+    }
+    
+    /* Eliminer les ombres et effets non nécessaires */
+    .profile-picture {
+        box-shadow: none;
+    }
+    
+    button {
+        display: none; /* Cacher les boutons dans la version imprimée */
+    }
+    
+    /* Supprimer l'animation et autres effets visuels */
+    @keyframes appear {
+        from {
+            opacity: 1;
+            transform: none;
+        }
+        to {
+            opacity: 1;
+            transform: none;
+        }
+    }
+}
