@@ -227,7 +227,6 @@ button:hover {
 }
 
 @media print {
-    /* Réinitialisation */
     * {
         margin: 0;
         padding: 0;
@@ -240,27 +239,27 @@ button:hover {
         color: #000;
         min-height: auto;
         display: block;
+        margin: 10mm;
     }
 
     .cv-layout {
-        max-width: 100%;
         width: 100%;
-        margin: 20px auto;
+        margin: 0;
         display: flex;
-        flex-direction: row; /* Mettre les sections côte à côte */
-        justify-content: space-between; /* Pour espacer les sections si nécessaire */
-        gap: 20px; /* Espace entre les colonnes */
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 15px;
     }
 
     .cv-left, .cv-right {
-        flex: 1; /* Chaque colonne prend une part égale de l'espace */
+        flex: 1;
         background: #fff;
         border: none;
         backdrop-filter: none;
         border-radius: 0;
-        padding: 15px;
+        padding: 10px;
         box-shadow: none;
-        margin-bottom: 0; /* Supprimer toute marge inférieure pour éviter l'espace entre les deux colonnes */
+        margin-bottom: 0;
     }
 
     h1 {
@@ -297,15 +296,13 @@ button:hover {
     }
 
     .cv-layout {
-        gap: 20px;
+        gap: 15px;
     }
 
-    /* Marges réduites */
     body {
-        margin: 20mm;
+        margin: 10mm;
     }
 
-    /* Textes ajustés */
     h1, h2, h3, h4, h5, h6 {
         font-size: 1rem;
     }
@@ -322,9 +319,8 @@ button:hover {
         font-size: 0.9rem;
     }
 
-    /* Pour que le footer ou les éléments supplémentaires tiennent sur la page */
     footer {
-        margin-top: 20px;
+        margin-top: 15px;
         font-size: 0.9rem;
     }
 
@@ -332,26 +328,22 @@ button:hover {
         text-align: center;
     }
 
-    /* Réduction de l'espace de padding dans le cv-layout */
     .cv-layout {
         gap: 10px;
     }
 
-    /* Ajuster les sections pour ne pas prendre trop de place */
     .cv-left, .cv-right {
-        padding: 12px;
+        padding: 8px;
     }
-    
-    /* Eliminer les ombres et effets non nécessaires */
+
     .profile-picture {
         box-shadow: none;
     }
-    
+
     button {
-        display: none; /* Cacher les boutons dans la version imprimée */
+        display: none;
     }
-    
-    /* Supprimer l'animation et autres effets visuels */
+
     @keyframes appear {
         from {
             opacity: 1;
