@@ -1,27 +1,83 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title><%= cvdata.name %> – CV</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="all" href="/main.css">
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Élodie GIMENEZ – CV</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
     <div id="loader">
         <div class="spinner"></div>
-    </div>
+      </div>
     <div class="cv-layout">
-        <% cvdata.layout.forEach(function(column) { %>
-        <div class="<%= column.className %>">
-            <% column.sections.forEach(function(sectionName) { %>
-            <%- renderSection(cvdata.sections[sectionName]) %>
-            <% }) %>
+        <div class="cv-left">
+            <img class="profile-picture" src="./img/profile.png" alt="Photo de profil"/>
+
+            <h1>Élodie GIMENEZ</h1>
+            <p class="justify-center">Étudiante en BTS SIO (Service Informatique aux Organisations) Option SISR – Lycée Dick Ukeiwë.<br>Passionnée par l'informatique, je développe mes compétences en administration système, réseau et développement web.</p>
+
+            <h2>Formations</h2>
+            <ul>
+                <li><strong>BTS SIO</strong> – Lycée Dick Ukeiwë (2025 - 2026)</li>
+                <li><strong>Baccalauréat Général</strong> – Lycée Dick Ukeiwë (2022 - 2024)</li>
+                <li><strong>Brevet</strong> – Collège Edmée Varin (2018 - 2021)</li>
+            </ul>
+
+            <h2>Diplômes</h2>
+            <ul>
+                <li><strong>Baccalauréat</strong> – 2024</li>
+                <li><strong>Brevet des collèges</strong> – 2021</li>
+            </ul>
+
+            <h2>Expériences</h2>
+            <ul>
+                <li>Déploiement d'un site web dynamique avec Docker</li>
+                <li>Gestion client OVHcloud et DigitalOcean</li>
+                <li>Configuration de routeur TP-LINK</li>
+            </ul>
+
+            <h2>Qualités</h2>
+            <p class="justify-center">Je suis autonome et curieuse, ce qui me permet d'apprendre rapidement de nouvelles technologies.</p>
         </div>
-    <% }) %>
+        <div class="cv-right">
+            <h2>Compétences Techniques</h2>
+            <ul>
+                <li><strong>Systèmes d'exploitation :</strong> Linux (Debian, Ubuntu), Windows, MacOS</li>
+                <li><strong>Réseaux :</strong> SSH, SFTP, WireGuard</li>
+                <li><strong>Virtualisation :</strong> Proxmox</li>
+                <li><strong>Conteneurisation :</strong> Docker</li>
+                <li><strong>Développement :</strong> JavaScript (NodeJS), Python, SQL</li>
+                <li><strong>Web :</strong> HTML, CSS, EJS</li>
+                <li><strong>Gestion de version :</strong> Git, GitHub</li>
+                <li><strong>Bureautique :</strong> Office 365</li>
+            </ul>
+            
+            <h2>Compétences Comportementales (Soft Skills)</h2>
+            <ul>
+                <li>Autonomie</li>
+                <li>Adaptabilité</li>
+                <li>Résolution de problèmes</li>
+            </ul>
+            
+            <h2>Langues</h2>
+            <ul>
+                <li><strong>Français :</strong> langue maternelle</li>
+                <li><strong>Anglais :</strong> B1+</li>
+                <li><strong>Espagnol :</strong> A2+</li>
+            </ul>
+
+            <h2>Contact</h2>
+            <ul class="contact-list">
+                <li><i class="fas fa-globe"></i> <a href="https://elodie.gimenez.xyz">Site internet</a></li>
+                <li><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/%C3%A9lodie-gimenez-198a13362/" target="_blank">LinkedIn</a></li>
+                <li><i class="fas fa-envelope"></i> <a href="mailto:elodie@gimenez.xyz">Email</a></li>
+                <li><i class="fab fa-github"></i> <a href="https://github.com/hermitoff" target="_blank">Github</a></li>
+            </ul>
+        </div>
     </div>
-    <button onclick="window.print()">Télécharger mon CV en PDF</button>
     <script src="/index.js"></script>
 </body>
 </html>
