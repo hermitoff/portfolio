@@ -3,14 +3,91 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Élodie GIMENEZ – Page d'accueil</title>
+    <title>Élodie GIMENEZ – Portfolio</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <meta http-equiv="Refresh" content="0; url=/cv" />
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
+    <link rel='stylesheet' type='text/css' href='main.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
-    <p>WIP</p>
-    <a href="/cv">Voir CV</a>
+    <nav class="navbar">
+        <div class="nav-logo">Élodie GIMENEZ</div>
+        <div class="nav-links">
+            <a href="#accueil" class="active">Accueil</a>
+            <a href="#projets">Projets</a>
+            <a href="#parcours">Parcours</a>
+            <a href="#competences">Compétences</a>
+            <a href="#contact">Contact</a>
+            <a href="/cv">CV</a>
+        </div>
+    </nav>
+    <section id="accueil" class="cv-layout section-portfolio" style="margin-top: 0; scroll-snap-align: start;">
+        <div class="cv-left" style="align-items: center; display: flex; flex-direction: column;">
+            <img class="profile-picture" src="./img/profile.png" alt="Photo de profil"/>
+            <h1>Bienvenue sur mon portfolio</h1>
+            <p class="justify-center">Je m'appelle <strong>Élodie GIMENEZ</strong>, étudiante en BTS SIO option SISR, passionnée par l'informatique, l'administration système, le réseau et le développement web.<br>Découvrez mes projets, mon parcours et mes compétences !</p>
+            <div style="margin: 30px 0; display: flex; gap: 15px; justify-content: center;">
+                <a href="/cv"><button>Voir mon CV</button></a>
+                <a href="#projets"><button>Mes projets</button></a>
+                <a href="#contact"><button>Contact</button></a>
+            </div>
+        </div>
+        <div class="cv-right">
+            <h2 id="projets">Projets récents</h2>
+            <ul>
+                <li><strong>Site web dynamique</strong> – Déploiement d'un site avec Docker, Node.js et EJS</li>
+                <li><strong>Gestion d'infrastructure</strong> – Configuration de serveurs Linux et virtualisation avec Proxmox</li>
+                <li><strong>Automatisation</strong> – Scripts Python pour la gestion de sauvegardes et monitoring</li>
+            </ul>
+        </div>
+    </section>
+    <section id="parcours" class="cv-layout section-portfolio" style="scroll-snap-align: start;">
+        <div class="cv-left">
+            <h2>Parcours</h2>
+            <p>À compléter…</p>
+        </div>
+        <div class="cv-right">
+            <h2>Expériences</h2>
+            <p>À compléter…</p>
+        </div>
+    </section>
+    <section id="competences" class="cv-layout section-portfolio" style="scroll-snap-align: start;">
+        <div class="cv-left">
+            <h2>Compétences techniques</h2>
+            <p>À compléter…</p>
+        </div>
+        <div class="cv-right">
+            <h2>Soft skills</h2>
+            <p>À compléter…</p>
+        </div>
+    </section>
+    <section id="contact" class="cv-layout section-portfolio" style="scroll-snap-align: start;">
+        <div class="cv-left">
+            <h2>Contact</h2>
+            <ul class="contact-list">
+                <li><i class="fas fa-globe"></i> <a href="https://elodie.gimenez.xyz">Site internet</a></li>
+                <li><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/%C3%A9lodie-gimenez-198a13362/" target="_blank">LinkedIn</a></li>
+                <li><i class="fas fa-envelope"></i> <a href="mailto:elodie@gimenez.xyz">Email</a></li>
+                <li><i class="fab fa-github"></i> <a href="https://github.com/hermitoff" target="_blank">Github</a></li>
+            </ul>
+        </div>
+        <div class="cv-right">
+            <h2>Réseaux sociaux</h2>
+            <p>À compléter…</p>
+        </div>
+    </section>
+    <footer class="justify-center" style="margin-top: 30px; text-align: center; color: #888;">© 2025 Élodie GIMENEZ</footer>
+    <script src="/index.js"></script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+            scroll-snap-type: y mandatory;
+        }
+        body {
+            scroll-snap-type: y mandatory;
+        }
+        section.cv-layout {
+            scroll-snap-align: start;
+        }
+    </style>
 </body>
 </html>
