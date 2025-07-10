@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Compétences – Élodie GIMENEZ</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' href='main.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <div id="loader">
+        <div class="spinner"></div>
+    </div>
+    <nav class="navbar">
+        <div class="nav-logo">Élodie GIMENEZ</div>
+        <div class="nav-links">
+            <a href="/">Accueil</a>
+            <a href="/projets">Projets</a>
+            <a href="/parcours">Parcours</a>
+            <a href="/competences" class="active">Compétences</a>
+            <a href="/contact">Contact</a>
+            <a href="/cv">CV</a>
+        </div>
+    </nav>
+    <section class="cv-layout section-portfolio">
+        <div class="cv-left">
+            <h1>Mes Compétences</h1>
+            <h2>Compétences techniques</h2>
+            <ul>
+                <li><strong>Administration système</strong> – Linux, Windows Server</li>
+                <li><strong>Réseau</strong> – Configuration, sécurité</li>
+                <li><strong>Développement web</strong> – Node.js, HTML, CSS, JavaScript</li>
+                <li><strong>Virtualisation</strong> – Proxmox, Docker</li>
+                <li><strong>Scripting</strong> – Python, Bash</li>
+            </ul>
+        </div>
+        <div class="cv-right">
+            <h2>Soft skills</h2>
+            <ul>
+                <li><strong>Travail en équipe</strong> – Collaboration efficace</li>
+                <li><strong>Résolution de problèmes</strong> – Approche analytique</li>
+                <li><strong>Apprentissage continu</strong> – Veille technologique</li>
+                <li><strong>Communication</strong> – Capacité d'adaptation</li>
+            </ul>
+            
+            <h2>Outils</h2>
+            <p>À compléter…</p>
+        </div>
+    </section>
+    <%- include('partials/footer') %>
+    <script src="/index.js"></script>
+</body>
+</html>

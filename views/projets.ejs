@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Projets – Élodie GIMENEZ</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' href='main.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <div id="loader">
+        <div class="spinner"></div>
+    </div>
+    <nav class="navbar">
+        <div class="nav-logo">Élodie GIMENEZ</div>
+        <div class="nav-links">
+            <a href="/">Accueil</a>
+            <a href="/projets" class="active">Projets</a>
+            <a href="/parcours">Parcours</a>
+            <a href="/competences">Compétences</a>
+            <a href="/contact">Contact</a>
+            <a href="/cv">CV</a>
+        </div>
+    </nav>
+    <section class="cv-layout section-portfolio">
+        <div class="cv-left">
+            <h1>Mes Projets</h1>
+            <h2>Projets techniques</h2>
+            <ul>
+                <li><strong>Site web dynamique</strong> – Déploiement d'un site avec Docker, Node.js et EJS</li>
+                <li><strong>Gestion d'infrastructure</strong> – Configuration de serveurs Linux et virtualisation avec Proxmox</li>
+                <li><strong>Automatisation</strong> – Scripts Python pour la gestion de sauvegardes et monitoring</li>
+            </ul>
+        </div>
+        <div class="cv-right">
+            <h2>Projets académiques</h2>
+            <p>À compléter…</p>
+            
+            <h2>Projets personnels</h2>
+            <p>À compléter…</p>
+        </div>
+    </section>
+    <%- include('partials/footer') %>
+    <script src="/index.js"></script>
+</body>
+</html>
