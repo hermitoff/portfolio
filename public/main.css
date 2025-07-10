@@ -182,7 +182,6 @@ body.menu-open .hamburger {
 .mobile-menu-links a:hover, .mobile-menu-links a.active {
     color: #fff;
     background: var(--accent-color);
-    /* padding et border-radius déjà sur le lien, donc pas de changement de taille */
 }
 .close-mobile-menu {
     position: absolute;
@@ -197,7 +196,7 @@ body.menu-open .hamburger {
     transition: color 0.2s;
 }
 .close-mobile-menu:hover {
-    color: #3730a3;
+    color: var(--accent-color);
 }
 
 @media (max-width: 900px) {
@@ -208,6 +207,12 @@ body.menu-open .hamburger {
         display: flex;
     }
     body.menu-open .hamburger {
+        display: none !important;
+    }
+}
+
+@media (min-width: 901px) {
+    .hamburger {
         display: none !important;
     }
 }
