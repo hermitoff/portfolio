@@ -6,23 +6,12 @@
     <title>Compétences – Élodie GIMENEZ</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' href='main.css'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
     <div id="loader">
         <div class="spinner"></div>
     </div>
-    <nav class="navbar">
-        <div class="nav-logo">Élodie GIMENEZ</div>
-        <div class="nav-links">
-            <a href="/">Accueil</a>
-            <a href="/projets">Projets</a>
-            <a href="/parcours">Parcours</a>
-            <a href="/competences" class="active">Compétences</a>
-            <a href="/contact">Contact</a>
-            <a href="/cv">CV</a>
-        </div>
-    </nav>
+    <%- include('partials/navbar') %>
     <section class="cv-layout section-portfolio">
         <div class="cv-left">
             <h1>Mes Compétences</h1>
