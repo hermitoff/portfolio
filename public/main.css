@@ -109,6 +109,109 @@ h2 {
     gap: 28px;
 }
 
+/* Hamburger */
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 120;
+    padding: 0;
+    margin-left: 16px;
+}
+body.menu-open .hamburger {
+    display: none !important;
+}
+
+.hamburger span {
+    display: block;
+    width: 26px;
+    height: 3px;
+    margin: 4px 0;
+    background: var(--accent-color);
+    border-radius: 2px;
+    transition: all 0.3s;
+}
+
+/* Mobile menu */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(18px);
+    z-index: 110;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+.mobile-menu.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+.mobile-menu-links {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
+}
+.mobile-menu-links a {
+    font-size: 2rem;
+    color: var(--accent-color);
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.2s, background 0.2s;
+    min-width: 220px;
+    text-align: center;
+    padding: 8px 0;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+.mobile-menu-links a:hover, .mobile-menu-links a.active {
+    color: #fff;
+    background: var(--accent-color);
+    /* padding et border-radius déjà sur le lien, donc pas de changement de taille */
+}
+.close-mobile-menu {
+    position: absolute;
+    top: 24px;
+    right: 32px;
+    background: none;
+    border: none;
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    cursor: pointer;
+    z-index: 120;
+    transition: color 0.2s;
+}
+.close-mobile-menu:hover {
+    color: #3730a3;
+}
+
+@media (max-width: 900px) {
+    .navbar .nav-links {
+        display: none;
+    }
+    .hamburger {
+        display: flex;
+    }
+    body.menu-open .hamburger {
+        display: none !important;
+    }
+}
+
 .navbar .nav-links a {
     color: var(--accent-color);
     font-weight: 500;
