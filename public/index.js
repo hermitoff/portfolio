@@ -27,17 +27,17 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 window.addEventListener('load', () => {
     const loader = document.getElementById('loader');
-    const layout = document.querySelector('.cv-layout');
     const sections = document.querySelectorAll('.cv-left, .cv-right');
 
-    loader.classList.add('hidden'); // Cache le loader
+    // Cache le loader
+    if (loader) {
+        loader.classList.add('hidden');
+    }
 
-    // Débloque les animations du contenu
-    layout.style.opacity = '1';
-    layout.style.animationPlayState = 'running';
-
-    sections.forEach(section => {
-      section.style.animationPlayState = 'running';
-      section.style.opacity = '1';
+    // Animation d'entrée progressive pour chaque section
+    sections.forEach((section, index) => {
+        setTimeout(() => {
+            section.classList.add('animate-in');
+        }, 200 + (index * 150)); // Délai progressif entre les sections
     });
 });

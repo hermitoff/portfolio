@@ -241,9 +241,6 @@ body.menu-open .hamburger {
     margin: 60px auto;
     display: flex;
     gap: 40px;
-    animation: appear 1s ease-out 0.5s forwards;
-    opacity: 0;
-    transform: translateY(30px);
 }
 
 .cv-left, .cv-right {
@@ -255,24 +252,19 @@ body.menu-open .hamburger {
     border-radius: 20px;
     padding: 30px;
     box-shadow: 0 8px 32px rgba(79, 70, 229, 0.15);
-    transition: all 0.4s ease;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.8s ease;
+}
+
+.cv-left.animate-in, .cv-right.animate-in {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .cv-left:hover, .cv-right:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 24px rgba(79, 70, 229, 0.3);
-}
-
-/* Animation */
-@keyframes appear {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    transform: translateY(-6px);
+    box-shadow: 0 15px 35px rgba(79, 70, 229, 0.2);
 }
 
 /* Profile Picture */
@@ -498,16 +490,5 @@ button:hover {
 
     button {
         display: none;
-    }
-
-    @keyframes appear {
-        from {
-            opacity: 1;
-            transform: none;
-        }
-        to {
-            opacity: 1;
-            transform: none;
-        }
     }
 }
