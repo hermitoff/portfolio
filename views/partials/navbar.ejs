@@ -7,12 +7,12 @@
         <% }) %>
     </div>
     <button class="hamburger" aria-label="Ouvrir le menu" aria-controls="mobile-menu" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
+        <i class="fas fa-bars"></i>
     </button>
     <div class="mobile-menu" id="mobile-menu">
-        <button class="close-mobile-menu" aria-label="Fermer le menu">&times;</button>
+        <button class="close-mobile-menu" aria-label="Fermer le menu">
+            <i class="fas fa-times"></i>
+        </button>
         <div class="mobile-menu-links">
             <a href="/" class="<%= currentPath === '/' ? 'active' : '' %>">Accueil</a>
             <% navPages.forEach(page => { %>

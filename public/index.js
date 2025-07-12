@@ -8,11 +8,13 @@ document.addEventListener('DOMContentLoaded', function () {
     function openMenu() {
         mobileMenu.classList.add('open');
         document.body.classList.add('menu-open');
+        hamburger.classList.add('active');
         hamburger.setAttribute('aria-expanded', 'true');
     }
     function closeMenu() {
         mobileMenu.classList.remove('open');
         document.body.classList.remove('menu-open');
+        hamburger.classList.remove('active');
         hamburger.setAttribute('aria-expanded', 'false');
     }
 
