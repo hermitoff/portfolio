@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>404 – Page non trouvée</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' href='/main.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <div id="loader">
+        <div class="spinner"></div>
+    </div>
+    <%- include('partials/navbar') %>
+    <section class="cv-layout section-portfolio" style="text-align:center; min-height:60vh; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+        <i class="fas fa-exclamation-triangle" style="font-size:5rem; color:#e74c3c; margin-bottom:1rem;"></i>
+        <h1 style="font-size:3rem; margin-bottom:0.5em;">404</h1>
+        <h2 style="margin-bottom:1em;">Oups, cette page n'existe pas !</h2>
+        <p>La page que vous cherchez est introuvable ou a été déplacée.</p>
+        <a href="/" style="margin-top:2em;"><button>Retour à l'accueil</button></a>
+    </section>
+    <%- include('partials/footer') %>
+    <script src="/index.js"></script>
+</body>
+</html>

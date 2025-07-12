@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title><%= page.title %> – Élodie GIMENEZ</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' href='/main.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <div id="loader">
+        <div class="spinner"></div>
+    </div>
+    <%- include('partials/navbar') %>
+    <section class="cv-layout section-portfolio">
+        <div class="cv-left" id="cv-left"></div>
+        <div class="cv-right" id="cv-right"></div>
+        <script type="application/json" id="page-content"><%- JSON.stringify(page.content) %></script>
+    </section>
+    <%- include('partials/footer') %>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        // Split markdown en deux colonnes avec le séparateur ---right---
+        const markdown = JSON.parse(document.getElementById('page-content').textContent);
+        const [left, right] = markdown.split('---right---');
+        document.getElementById('cv-left').innerHTML = marked.parse(left || '');
+        document.getElementById('cv-right').innerHTML = marked.parse(right || '');
+    </script>
+    <script src="/index.js"></script>
+</body>
+</html>

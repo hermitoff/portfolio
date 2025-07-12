@@ -3,9 +3,8 @@ const sequelize = require('../db');
 
 const Page = sequelize.define('Page', {
     id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         primaryKey: true,
-        autoIncrement: true
     },
     title: {
         type: DataTypes.STRING,
@@ -17,12 +16,12 @@ const Page = sequelize.define('Page', {
     },
     createdAt: {
         type: DataTypes.DATE,
-        allowNull: false,
+        allowNull: true,
         defaultValue: DataTypes.NOW
     },
     updatedAt: {
         type: DataTypes.DATE,
-        allowNull: false,
+        allowNull: true,
         defaultValue: DataTypes.NOW
     }
 }, {
