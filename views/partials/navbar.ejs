@@ -2,11 +2,9 @@
     <div class="nav-logo">Élodie GIMENEZ</div>
     <div class="nav-links">
         <a href="/" class="<%= currentPath === '/' ? 'active' : '' %>">Accueil</a>
-        <a href="/projets" class="<%= currentPath.startsWith('/projets') ? 'active' : '' %>">Projets</a>
-        <a href="/parcours" class="<%= currentPath.startsWith('/parcours') ? 'active' : '' %>">Parcours</a>
-        <a href="/competences" class="<%= currentPath.startsWith('/competences') ? 'active' : '' %>">Compétences</a>
-        <a href="/contact" class="<%= currentPath.startsWith('/contact') ? 'active' : '' %>">Contact</a>
-        <a href="/cv" class="<%= currentPath.startsWith('/cv') ? 'active' : '' %>">CV</a>
+        <% navPages.forEach(page => { %>
+            <a href="/<%= page.id %>" class="<%= currentPath === '/' + page.id || currentPath.startsWith('/' + page.id) ? 'active' : '' %>"><%= page.title %></a>
+        <% }) %>
     </div>
     <button class="hamburger" aria-label="Ouvrir le menu" aria-controls="mobile-menu" aria-expanded="false">
         <span></span>
@@ -17,11 +15,9 @@
         <button class="close-mobile-menu" aria-label="Fermer le menu">&times;</button>
         <div class="mobile-menu-links">
             <a href="/" class="<%= currentPath === '/' ? 'active' : '' %>">Accueil</a>
-            <a href="/projets" class="<%= currentPath.startsWith('/projets') ? 'active' : '' %>">Projets</a>
-            <a href="/parcours" class="<%= currentPath.startsWith('/parcours') ? 'active' : '' %>">Parcours</a>
-            <a href="/competences" class="<%= currentPath.startsWith('/competences') ? 'active' : '' %>">Compétences</a>
-            <a href="/contact" class="<%= currentPath.startsWith('/contact') ? 'active' : '' %>">Contact</a>
-            <a href="/cv" class="<%= currentPath.startsWith('/cv') ? 'active' : '' %>">CV</a>
+            <% navPages.forEach(page => { %>
+                <a href="/<%= page.id %>" class="<%= currentPath === '/' + page.id || currentPath.startsWith('/' + page.id) ? 'active' : '' %>"><%= page.title %></a>
+            <% }) %>
         </div>
     </div>
 </nav>

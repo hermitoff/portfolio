@@ -23,6 +23,16 @@ const Page = sequelize.define('Page', {
         type: DataTypes.DATE,
         allowNull: true,
         defaultValue: DataTypes.NOW
+    },
+    visibleInNav: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true,
+        allowNull: false
+    },
+    published: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true,
+        allowNull: false
     }
 }, {
     tableName: 'Pages',
