@@ -383,6 +383,11 @@ button:hover {
         margin: 10mm;
     }
 
+    /* Masquer la navbar lors de l'impression */
+    .navbar {
+        display: none;
+    }
+
     .cv-layout {
         width: 100%;
         margin: 0;
