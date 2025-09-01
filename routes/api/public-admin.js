@@ -174,6 +174,12 @@ router.post('/login', [
         const expiresAt = new Date(createdAt.getTime() + (config.session_duration * 1000));
         const generatedId = generateSnowflake();
 
+        // Validation de la date d'expiration
+        if (isNaN(expiresAt.getTime())) {
+            console.error('Erreur: Date d\'expiration invalide calculée');
+            return res.status(500).json({ error: 'Configuration de session invalide' });
+        }
+
         await Session.create({
             id: generatedId,
             token: authToken,

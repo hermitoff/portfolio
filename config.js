@@ -14,7 +14,8 @@ if (!fs.existsSync(envPath) && !allowEnvLess) {
 
 // Check required environment variables
 const requiredEnvVars = [
-    'PORT'
+    'PORT',
+    'SESSION_DURATION'
 ];
 
 const unsetEnvVars = requiredEnvVars.filter((varName) => !process.env[varName]);
@@ -25,7 +26,14 @@ if (isNaN(port) || port < 1 || port > 65535) {
     throw new Error('SYSTEM: PORT must be a valid port number (1-65535).');
 }
 
+// Validation of SESSION_DURATION
+const session_duration = parseInt(process.env.SESSION_DURATION, 10);
+if (isNaN(session_duration) || session_duration < 1) {
+    throw new Error('SYSTEM: SESSION_DURATION must be a valid number (in seconds).');
+}
+
 // Export variables
 module.exports = {
-    port
+    port,
+    session_duration
 };

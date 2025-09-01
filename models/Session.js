@@ -16,7 +16,7 @@ const Session = sequelize.define('Session', {
         allowNull: false
     },
     userId: {
-        type: DataTypes.BIGINT,
+        type: DataTypes.STRING,
         allowNull: false,
         references: {
             model: User,

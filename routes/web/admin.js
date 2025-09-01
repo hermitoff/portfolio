@@ -85,6 +85,13 @@ router.post('/login', redirectIfAuthenticated, async (req, res) => {
         const expiresAt = new Date(createdAt.getTime() + (config.session_duration * 1000));
         const generatedId = generateSnowflake();
 
+        // Validation de la date d'expiration
+        if (isNaN(expiresAt.getTime())) {
+            console.error('Erreur: Date d\'expiration invalide calculée');
+            req.flash('error', 'Erreur de configuration de session');
+            return res.redirect('/admin/login');
+        }
+
         await Session.create({
             id: generatedId,
             token: authToken,
@@ -105,7 +112,11 @@ router.post('/login', redirectIfAuthenticated, async (req, res) => {
             maxAge: remember ? 30 * 24 * 60 * 60 * 1000 : 24 * 60 * 60 * 1000 // 30 jours si "remember", sinon 1 jour
         };
 
+        console.log('Login - Définition du cookie avec token:', authToken.substring(0, 10) + '...');
+        console.log('Login - Options du cookie:', cookieOptions);
+        
         res.cookie('adminToken', authToken, cookieOptions);
+        console.log('Login - Cookie défini, redirection vers /admin');
         res.redirect('/admin');
 
     } catch (error) {
@@ -140,11 +151,29 @@ router.get('/', requireAdminAuth, (req, res) => {
     res.render('admin/index', { user: req.user });
 });
 
-// Routes futures pour les autres sections admin (à implémenter)
+// Routes pour la gestion des pages (interface web)
 router.get('/pages', requireAdminAuth, (req, res) => {
-    res.send('Gestion des pages - À implémenter');
+    res.render('admin/pages/index', { user: req.user });
 });
 
+router.get('/pages/edit', requireAdminAuth, (req, res) => {
+    res.render('admin/pages/edit', { user: req.user, pageData: null });
+});
+
+router.get('/pages/edit/:id', requireAdminAuth, async (req, res) => {
+    try {
+        const page = await Page.findByPk(req.params.id);
+        if (!page) {
+            return res.status(404).render('404', { currentPath: req.path });
+        }
+        res.render('admin/pages/edit', { user: req.user, pageData: page });
+    } catch (error) {
+        console.error('Erreur lors du chargement de la page:', error);
+        res.status(500).send('Erreur serveur');
+    }
+});
+
+// Routes futures pour les autres sections admin (à implémenter)
 router.get('/users', requireAdminAuth, (req, res) => {
     res.send('Gestion des utilisateurs - À implémenter');
 });

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title><%= pageData ? 'Modifier' : 'Créer' %> une page – Admin</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' href='/main.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- EasyMDE pour l'éditeur markdown -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easymde@2.18.0/dist/easymde.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/easymde@2.18.0/dist/easymde.min.js"></script>
+</head>
+<body>
+    <div id="loader">
+        <div class="spinner"></div>
+    </div>
+    <%- include('../../partials/navbar') %>
+    
+    <div class="cv-layout" style="max-width: 1400px; margin: 80px auto;">
+        <div class="cv-left" style="width: 100%;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+                <div>
+                    <h1>
+                        <i class="fas fa-<%= pageData ? 'edit' : 'plus' %>" style="margin-right: 10px;"></i>
+                        <%= pageData ? 'Modifier' : 'Créer' %> une page
+                    </h1>
+                    <p style="color: #666; margin: 0;">
+                        <% if (pageData) { %>
+                            Modification de la page "<%= pageData.title %>"
+                        <% } else { %>
+                            Créer une nouvelle page pour votre portfolio
+                        <% } %>
+                    </p>
+                </div>
+                <a href="/admin/pages" style="text-decoration: none;">
+                    <button style="background: #6b7280;">
+                        <i class="fas fa-arrow-left" style="margin-right: 8px;"></i>
+                        Retour à la liste
+                    </button>
+                </a>
+            </div>
+            
+            <form id="pageForm" style="display: grid; grid-template-columns: 1fr 300px; gap: 30px;">
+                <!-- Contenu principal -->
+                <div style="background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); padding: 30px;">
+                    <!-- Informations de base -->
+                    <div style="margin-bottom: 30px;">
+                        <h3 style="margin: 0 0 20px 0; color: #111827; border-bottom: 2px solid #e5e7eb; padding-bottom: 10px;">
+                            <i class="fas fa-info-circle" style="margin-right: 8px; color: #6366f1;"></i>
+                            Informations de base
+                        </h3>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                            <div>
+                                <label for="pageId" style="display: block; margin-bottom: 8px; font-weight: 500; color: #374151;">
+                                    ID de la page <span style="color: #ef4444;">*</span>
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="pageId" 
+                                    name="id" 
+                                    required 
+                                    value="<%= pageData ? pageData.id : '' %>"
+                                    <%= pageData ? 'readonly' : '' %>
+                                    placeholder="ex: about, projects, contact"
+                                    style="width: 100%; padding: 12px 16px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 1rem; font-family: 'Manrope', sans-serif;"
+                                >
+                                <small style="color: #6b7280; font-size: 0.85rem;">URL : /<span id="urlPreview"><%= pageData ? pageData.id : 'votre-id' %></span></small>
+                            </div>
+                            
+                            <div>
+                                <label for="pageTitle" style="display: block; margin-bottom: 8px; font-weight: 500; color: #374151;">
+                                    Titre de la page <span style="color: #ef4444;">*</span>
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="pageTitle" 
+                                    name="title" 
+                                    required 
+                                    value="<%= pageData ? pageData.title : '' %>"
+                                    placeholder="Titre qui apparaîtra sur la page"
+                                    style="width: 100%; padding: 12px 16px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 1rem; font-family: 'Manrope', sans-serif;"
+                                >
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="pageDescription" style="display: block; margin-bottom: 8px; font-weight: 500; color: #374151;">
+                                Description
+                            </label>
+                            <textarea 
+                                id="pageDescription" 
+                                name="description" 
+                                placeholder="Description courte de la page (optionnel)"
+                                style="width: 100%; padding: 12px 16px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 1rem; font-family: 'Manrope', sans-serif; resize: vertical; min-height: 80px;"
+                            ><%= pageData ? (pageData.description || '') : '' %></textarea>
+                        </div>
+                    </div>
+                    
+                    <!-- Contenu markdown -->
+                    <div>
+                        <h3 style="margin: 0 0 20px 0; color: #111827; border-bottom: 2px solid #e5e7eb; padding-bottom: 10px;">
+                            <i class="fab fa-markdown" style="margin-right: 8px; color: #6366f1;"></i>
+                            Contenu de la page
+                        </h3>
+                        
+                        <textarea id="markdownEditor" name="content"><%= pageData ? pageData.content : '' %></textarea>
+                    </div>
+                </div>
+                
+                <!-- Sidebar - Options -->
+                <div style="display: flex; flex-direction: column; gap: 20px;">
+                    <!-- Actions -->
+                    <div style="background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); padding: 20px;">
+                        <h4 style="margin: 0 0 15px 0; color: #111827;">
+                            <i class="fas fa-cog" style="margin-right: 8px; color: #6366f1;"></i>
+                            Actions
+                        </h4>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 10px;">
+                            <button type="submit" id="saveBtn" style="width: 100%; background: #16a34a;">
+                                <i class="fas fa-save" style="margin-right: 8px;"></i>
+                                <%= pageData ? 'Mettre à jour' : 'Créer la page' %>
+                            </button>
+                            
+                            <% if (pageData) { %>
+                                <button type="button" onclick="previewPage()" style="width: 100%; background: #3b82f6;">
+                                    <i class="fas fa-eye" style="margin-right: 8px;"></i>
+                                    Prévisualiser
+                                </button>
+                                
+                                <button type="button" onclick="deletePage()" style="width: 100%; background: #ef4444;">
+                                    <i class="fas fa-trash" style="margin-right: 8px;"></i>
+                                    Supprimer
+                                </button>
+                            <% } %>
+                        </div>
+                    </div>
+                    
+                    <!-- Paramètres -->
+                    <div style="background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); padding: 20px;">
+                        <h4 style="margin: 0 0 15px 0; color: #111827;">
+                            <i class="fas fa-sliders-h" style="margin-right: 8px; color: #6366f1;"></i>
+                            Paramètres
+                        </h4>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 15px;">
+                            <label style="display: flex; align-items: center; cursor: pointer;">
+                                <input 
+                                    type="checkbox" 
+                                    id="published" 
+                                    name="published" 
+                                    <%= (pageData && pageData.published) ? 'checked' : '' %>
+                                    style="margin-right: 10px; width: 18px; height: 18px; accent-color: #6366f1;"
+                                >
+                                <span>
+                                    <strong>Page publiée</strong><br>
+                                    <small style="color: #6b7280;">Visible par les visiteurs</small>
+                                </span>
+                            </label>
+                            
+                            <label style="display: flex; align-items: center; cursor: pointer;">
+                                <input 
+                                    type="checkbox" 
+                                    id="visibleInNav" 
+                                    name="visibleInNav" 
+                                    <%= (pageData && pageData.visibleInNav) ? 'checked' : '' %>
+                                    style="margin-right: 10px; width: 18px; height: 18px; accent-color: #6366f1;"
+                                >
+                                <span>
+                                    <strong>Visible dans la navigation</strong><br>
+                                    <small style="color: #6b7280;">Apparaît dans le menu</small>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- Aide -->
+                    <div style="background: #f0f9ff; border: 1px solid #0ea5e9; border-radius: 12px; padding: 20px;">
+                        <h4 style="margin: 0 0 15px 0; color: #0c4a6e;">
+                            <i class="fas fa-info-circle" style="margin-right: 8px;"></i>
+                            Aide Markdown
+                        </h4>
+                        <div style="font-size: 0.85rem; color: #075985; line-height: 1.5;">
+                            <p style="margin: 0 0 10px 0;"><strong>Syntaxe de base :</strong></p>
+                            <ul style="margin: 0; padding-left: 20px;">
+                                <li><code># Titre</code> pour les titres</li>
+                                <li><code>**gras**</code> pour le texte en gras</li>
+                                <li><code>*italique*</code> pour l'italique</li>
+                                <li><code>[lien](url)</code> pour les liens</li>
+                                <li><code>![alt](url)</code> pour les images</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <%- include('../../partials/footer') %>
+    <script src="/index.js"></script>
+    <script>
+        let easyMDE;
+        const isEdit = <%= pageData ? 'true' : 'false' %>;
+        const originalPageId = '<%= pageData ? pageData.id : '' %>';
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialiser l'éditeur markdown
+            easyMDE = new EasyMDE({
+                element: document.getElementById('markdownEditor'),
+                placeholder: 'Écrivez le contenu de votre page en Markdown...',
+                spellChecker: false,
+                autofocus: !isEdit,
+                toolbar: [
+                    'bold', 'italic', 'heading', '|',
+                    'quote', 'unordered-list', 'ordered-list', '|',
+                    'link', 'image', '|',
+                    'preview', 'side-by-side', 'fullscreen', '|',
+                    'guide'
+                ],
+                status: ['autosave', 'lines', 'words', 'cursor'],
+                tabSize: 4,
+                indentWithTabs: false
+            });
+            
+            // Mise à jour de l'aperçu URL
+            document.getElementById('pageId').addEventListener('input', function() {
+                document.getElementById('urlPreview').textContent = this.value || 'votre-id';
+            });
+            
+            // Gestion du formulaire
+            document.getElementById('pageForm').addEventListener('submit', handleSubmit);
+        });
+        
+        async function handleSubmit(event) {
+            event.preventDefault();
+            
+            const saveBtn = document.getElementById('saveBtn');
+            const originalText = saveBtn.innerHTML;
+            saveBtn.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right: 8px;"></i>Enregistrement...';
+            saveBtn.disabled = true;
+            
+            try {
+                const formData = new FormData(event.target);
+                const data = {
+                    id: formData.get('id'),
+                    title: formData.get('title'),
+                    description: formData.get('description'),
+                    content: easyMDE.value(),
+                    published: formData.has('published'),
+                    visibleInNav: formData.has('visibleInNav')
+                };
+                
+                const url = isEdit ? `/api/admin/pages/${originalPageId}` : '/api/admin/pages';
+                const method = isEdit ? 'PUT' : 'POST';
+                
+                const response = await fetch(url, {
+                    method: method,
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                if (response.ok) {
+                    const result = await response.json();
+                    showSuccess(isEdit ? 'Page mise à jour avec succès' : 'Page créée avec succès');
+                    
+                    // Rediriger vers la liste après un court délai
+                    setTimeout(() => {
+                        window.location.href = '/admin/pages';
+                    }, 1500);
+                } else {
+                    const error = await response.json();
+                    showError(error.message || 'Erreur lors de l\'enregistrement');
+                }
+            } catch (error) {
+                console.error('Erreur:', error);
+                showError('Erreur de connexion');
+            } finally {
+                saveBtn.innerHTML = originalText;
+                saveBtn.disabled = false;
+            }
+        }
+        
+        function previewPage() {
+            const pageId = document.getElementById('pageId').value;
+            if (pageId) {
+                window.open(`/${pageId}`, '_blank');
+            } else {
+                showError('Enregistrez d\'abord la page pour la prévisualiser');
+            }
+        }
+        
+        async function deletePage() {
+            if (!confirm(`Êtes-vous sûr de vouloir supprimer la page "${originalPageId}" ? Cette action est irréversible.`)) {
+                return;
+            }
+            
+            try {
+                const response = await fetch(`/api/admin/pages/${originalPageId}`, {
+                    method: 'DELETE'
+                });
+                
+                if (response.ok) {
+                    showSuccess('Page supprimée avec succès');
+                    setTimeout(() => {
+                        window.location.href = '/admin/pages';
+                    }, 1500);
+                } else {
+                    const error = await response.json();
+                    showError(error.message || 'Erreur lors de la suppression');
+                }
+            } catch (error) {
+                console.error('Erreur:', error);
+                showError('Erreur de connexion');
+            }
+        }
+        
+        function showError(message) {
+            // Système de notification simple
+            const notification = createNotification(message, 'error');
+            document.body.appendChild(notification);
+        }
+        
+        function showSuccess(message) {
+            const notification = createNotification(message, 'success');
+            document.body.appendChild(notification);
+        }
+        
+        function createNotification(message, type) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 15px 20px;
+                border-radius: 8px;
+                color: white;
+                font-weight: 500;
+                z-index: 1000;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+                background: ${type === 'success' ? '#16a34a' : '#ef4444'};
+                animation: slideIn 0.3s ease-out;
+            `;
+            
+            notification.innerHTML = `
+                <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-triangle'}" style="margin-right: 8px;"></i>
+                ${message}
+            `;
+            
+            // Auto-supprimer après 5 secondes
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease-in forwards';
+                setTimeout(() => notification.remove(), 300);
+            }, 5000);
+            
+            return notification;
+        }
+        
+        // Styles pour les animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+            
+            .EasyMDEContainer .editor-toolbar {
+                border-top: 1px solid #e5e7eb;
+                border-left: 1px solid #e5e7eb;
+                border-right: 1px solid #e5e7eb;
+                background: #f9fafb;
+            }
+            
+            .EasyMDEContainer .CodeMirror {
+                border: 1px solid #e5e7eb;
+                border-radius: 0 0 8px 8px;
+                font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+            
+            .EasyMDEContainer .editor-preview {
+                background: white;
+                padding: 20px;
+                font-family: 'Manrope', sans-serif;
+                line-height: 1.7;
+            }
+            
+            @media (max-width: 1024px) {
+                .cv-layout form {
+                    grid-template-columns: 1fr !important;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

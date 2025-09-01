@@ -157,7 +157,7 @@ module.exports = { syncDatabase };
 if (require.main === module) {
     (async () => {
         try {
-            await syncDatabase({ force: false, alter: true });
+            await syncDatabase({ force: false, alter: false });
         } finally {
             await sequelize.close();
         }

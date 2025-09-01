@@ -27,7 +27,7 @@ app.use('/', Routes);
 
 
 // Synchronisation automatique de la base de données avant de démarrer le serveur
-syncDatabase({ force: false, alter: true })
+syncDatabase({ force: false, alter: false })
     .then(() => {
         app.listen(config.port, () => {
             console.log(`SYSTEM: Server is running on port: ${config.port}`);

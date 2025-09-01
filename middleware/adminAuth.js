@@ -4,6 +4,9 @@ const { verifyToken } = require('./authenticate');
 const requireAdminAuth = async (req, res, next) => {
     // Chercher le token dans les cookies ou headers
     const authToken = req.headers.authorization || req.cookies?.adminToken;
+    
+    console.log('AdminAuth - Token trouvé:', authToken ? 'OUI' : 'NON');
+    console.log('AdminAuth - Cookies disponibles:', Object.keys(req.cookies || {}));
 
     try {
         const user = await verifyToken(authToken);
