@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Page = require('../models/Page');
+const Page = require('../../models/Page');
 
 // Middleware pour injecter les pages visibles et publiées dans toutes les vues
 router.use(async (req, res, next) => {
@@ -12,8 +12,7 @@ router.use(async (req, res, next) => {
             },
             order: [['createdAt', 'ASC']]
         });
-        // On retire la page d'accueil (id 'index') de la navigation
-        res.locals.navPages = navPages.filter(page => page.id !== 'index');
+        res.locals.navPages = navPages || [];
     } catch (err) {
         res.locals.navPages = [];
     }

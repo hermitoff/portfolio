@@ -1,9 +1,8 @@
 <nav class="navbar">
     <div class="nav-logo">Élodie GIMENEZ</div>
     <div class="nav-links">
-        <a href="/" class="<%= currentPath === '/' ? 'active' : '' %>">Accueil</a>
         <% navPages.forEach(page => { %>
-            <a href="/<%= page.id %>" class="<%= currentPath === '/' + page.id || currentPath.startsWith('/' + page.id) ? 'active' : '' %>"><%= page.title %></a>
+            <a href="/<%= page.navHref %>" class="<%= currentPath === '/' + page.id || currentPath.startsWith('/' + page.id) ? 'active' : '' %>"><%= page.title %></a>
         <% }) %>
     </div>
     <button class="hamburger" aria-label="Ouvrir le menu" aria-controls="mobile-menu" aria-expanded="false">
@@ -14,9 +13,8 @@
             <i class="fas fa-times"></i>
         </button>
         <div class="mobile-menu-links">
-            <a href="/" class="<%= currentPath === '/' ? 'active' : '' %>">Accueil</a>
             <% navPages.forEach(page => { %>
-                <a href="/<%= page.id %>" class="<%= currentPath === '/' + page.id || currentPath.startsWith('/' + page.id) ? 'active' : '' %>"><%= page.title %></a>
+                <a href="/<%= page.navHref %>" class="<%= currentPath === '/' + page.id || currentPath.startsWith('/' + page.id) ? 'active' : '' %>"><%= page.title %></a>
             <% }) %>
         </div>
     </div>

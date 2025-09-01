@@ -29,6 +29,10 @@ const Page = sequelize.define('Page', {
         defaultValue: true,
         allowNull: false
     },
+    navHref: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
     published: {
         type: DataTypes.BOOLEAN,
         defaultValue: true,

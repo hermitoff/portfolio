@@ -1,17 +1,19 @@
-
 const express = require('express');
 const app = express();
 const path = require('path');
 const morgan = require('morgan');
+const cookieParser = require('cookie-parser');
 // Import config
 const config = require('./config');
 // Import routes
-const webRoutes = require('./routes/web');
+const Routes = require('./routes/routes');
 // Import database sync
 const { syncDatabase } = require('./syncDb');
 
-// Middleware to parse JSON bodies
+// Middleware to parse JSON bodies and URL-encoded forms
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser()); // Pour gérer les cookies
 
 // Config EJS as the template engine
 app.set('view engine', 'ejs');
@@ -21,7 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(morgan('common'));
 
-app.use('/', webRoutes);
+app.use('/', Routes);
 
 
 // Synchronisation automatique de la base de données avant de démarrer le serveur

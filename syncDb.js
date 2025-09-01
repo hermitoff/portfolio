@@ -1,9 +1,46 @@
 // Core dependencies
 const readline = require('readline');
+const bcrypt = require('bcrypt');
 // Database
 const sequelize = require('./db');
 // Models
-const { Page } = require('./models/index');
+const { Role, User } = require('./models/index');
+// Utils
+const { generateSnowflake } = require('./utils');
+
+async function initRoles() {
+    const roles = await Role.findAll();
+    if (roles.length === 0) {
+        await Promise.all([
+            Role.create({ id: 'USER', name: 'User' }),
+            Role.create({ id: 'ADMIN', name: 'Administrator' })
+        ]);
+    }
+}
+
+async function initDefaultAdmin() {
+    // Vérifier s'il y a déjà un utilisateur admin
+    const adminUser = await User.findOne({ where: { roleId: 'ADMIN' } });
+    
+    if (!adminUser) {
+        // Créer un utilisateur admin par défaut
+        const hashedPassword = await bcrypt.hash('admin123', 10);
+        const adminId = generateSnowflake();
+        
+        await User.create({
+            id: adminId,
+            username: 'admin',
+            displayname: 'Administrateur',
+            password: hashedPassword,
+            roleId: 'ADMIN'
+        });
+        
+        console.log('DATABASE: Default admin user created!');
+        console.log('  Username: admin');
+        console.log('  Password: admin123');
+        console.log('  ** IMPORTANT: Change this password after first login! **');
+    }
+}
 
 async function askAction() {
     const rl = readline.createInterface({
@@ -100,6 +137,13 @@ async function syncDatabase({ force = false, alter = false } = {}) {
             await sequelize.sync({ force: false });
         }
         console.log("DATABASE: Database synced!");
+        
+        // Initialize default roles
+        await initRoles();
+        console.log("DATABASE: Default roles initialized!");
+        
+        // Initialize default admin user
+        await initDefaultAdmin();
     } catch (error) {
         console.error("DATABASE: Unable to sync the database:", error);
         throw error;
